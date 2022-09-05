@@ -1,12 +1,12 @@
-const express = require("express");
+const express = require('express');
+const path = require('path');
 const app = express();
 
-app.get("/", function (req, res) {
-    res.send("Hello World");
-});
-app.get("/new", function (req, res) {
-    res.send("New also worked");
-});
 
-app.listen(process.env.PORT || 5000);
-module.exports = app;
+//Static Folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
